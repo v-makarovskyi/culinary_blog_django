@@ -1,0 +1,11 @@
+{% load menu_tags %}
+
+<nav class="header__menu">
+    <ul>
+        <li class="active"><a href="/">Главная</a></li>
+        {% get_last_post %}
+        {% get_categories %}
+        <li><a href="{% url 'contact:about' %}">О нас</a> </li>
+        <li><a href="{% url 'contact:contact' %}">Контакты</a></li>
+    </ul>
+</nav>

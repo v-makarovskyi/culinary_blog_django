@@ -1,0 +1,7 @@
+{% load menu_tags %}
+<ul>
+    {% get_list_category as category %}
+    {% for node in category %}
+    <li><a href="{% url 'blog:post_list' node.slug %}">{{ node.name }}</a></li>
+    {% endfor %}
+</ul>

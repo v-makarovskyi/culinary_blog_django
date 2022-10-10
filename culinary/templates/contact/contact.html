@@ -1,0 +1,56 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+
+<div class="contact spad">
+  <div class="container">
+    <div class="contact__text">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="breadcrumb__text">
+            <h2>Контакты</h2>
+            <div class="breadcrumb__option">
+              <a href="#">На главную</a>
+              <span>Контакты</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-between">
+        <div class="col-lg-6 col-md-6">
+          <div class="contact__map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.3923473803734!2d30.522106115621472!3d50.452418195104265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ce506aa860c9%3A0xee2ec1ecbbb48832!2z0YPQuy4g0JzQuNGF0LDQudC70L7QstGB0LrQsNGPLCA20JIsINCa0LjQtdCyLCAwMjAwMA!5e0!3m2!1sru!2sua!4v1664894126098!5m2!1sru!2sua" width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div> 
+          <div class="contact__widget">
+            <ul>
+                {% for contact in contacts %}
+                    <li>
+                        <i class="fa fa-map-marker"></i>
+                        <img class="contact_icon" src="{{ contact.icon.url }}" alt="#">
+                        <span>{{ contact.name }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-5 col-md-5">
+            <div class="contact__form">
+                <div class="contact__form__title">
+                    <h2>Написать мне</h2>
+                    <!-- <p>
+                        Для вопросов и предложений воспользуйтесь контактной формой.
+                    </p> -->
+                </div>
+                <form action="{% url 'contact:feedback' %}" method="post">
+                    {% csrf_token %}
+                    {{ form }}
+                    <button class="site-btn" type="submit">Отправить</button>
+                </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
